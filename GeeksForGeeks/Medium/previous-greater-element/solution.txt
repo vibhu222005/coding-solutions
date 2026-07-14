@@ -1,0 +1,23 @@
+class Solution {
+    public ArrayList<Integer> preGreaterEle(int[] arr) {
+        int[] nums=new int[arr.length];
+        Stack<Integer> st=new Stack<>();
+        ArrayList<Integer> lt=new ArrayList<>();
+        Arrays.fill(nums,-1);
+        for(int i=arr.length-1;i>=0;i--)
+        {
+            while(!st.isEmpty()&&arr[st.peek()]<arr[i])
+            {
+                nums[st.pop()]=i;
+            }
+            st.push(i);
+        }
+        for (int i = 0; i < arr.length; i++) {
+    if (nums[i] == -1)
+        lt.add(-1);
+    else
+        lt.add(arr[nums[i]]);
+}
+        return lt;
+    }
+}
